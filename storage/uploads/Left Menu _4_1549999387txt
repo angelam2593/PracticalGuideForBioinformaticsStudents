@@ -1,0 +1,705 @@
+
+<ul id="menu" class="page-sidebar-menu">
+    @if(Sentinel::getUser()->permissions['admin'])
+        <li {!! (Request::is('admin/kpi/*') ? 'class="active"' : '') !!}}>
+            {{-- <a href="{{ route('dashboard') }}"> --}}
+            <a href="#">
+                <i class="livicon" data-name="home" data-size="18" data-c="#418BCA" data-hc="#418BCA"
+                   data-loop="true"></i>
+                <span class="title">Dashboard</span>
+                <span class="fa arrow"></span>
+            </a>
+            <ul class="sub-menu">
+                <!--<li {!! (Request::is('admin/kpi/general_kpi') ? 'class="active" id="active"' : '') !!}>
+                    <a href="{{ URL::to('admin/kpi/general_kpi') }}">
+                        <i class="fa fa-angle-double-right"></i>
+                        Financial Kpi
+                    </a>
+                </li>-->
+                <li {!! (Request::is('admin/kpi/qc_kpi') ? 'class="active" id="active"' : '') !!}>
+                    <a href="{{ URL::to('admin/kpi/qc_kpi') }}">
+                        <i class="fa fa-angle-double-right"></i>
+                        QC Kpi
+                    </a>
+                </li>
+                @if(Sentinel::getUser()->permissions['sales'] || Sentinel::getUser()->permissions['management'] || Sentinel::getUser()->permissions['development'])
+                <li {!! (Request::is('admin/kpi/sales_kpi') ? 'class="active" id="active"' : '') !!}>
+                    <a href="{{ URL::to('admin/kpi/sales_kpi') }}">
+                        <i class="fa fa-angle-double-right" data-toggle="collapse" href="#collapseMenu1"></i>
+                        Sales Kpi
+                    </a>
+                    <ul class="collapse" id="collapseMenu1">
+                        <li {!! (Request::is('admin/kpi/cash_flow_kpi') ? 'class="active" id="active"' : '') !!}>
+                            <a href="{{ URL::to('admin/kpi/cash_flow_kpi') }}">
+                                <i class="fa fa-angle-double-right col-md-2"></i>
+                                Cash Flow Kpi
+                            </a>
+                        </li>
+                        <li {!! (Request::is('admin/kpi/financial_kpi') ? 'class="active" id="active"' : '') !!}>
+                            <a href="{{ URL::to('admin/kpi/financial_kpi') }}">
+                                <i class="fa fa-angle-double-right col-md-2"></i>
+                                Financial Kpi
+                            </a>
+                        </li>
+                        <li {!! (Request::is('admin/kpi/sales_kpi') ? 'class="active" id="active"' : '') !!}>
+                            <a href="{{ URL::to('admin/kpi/sales_kpi') }}">
+                                <i class="fa fa-angle-double-right col-md-2"></i>
+                                BIG3 Map
+                            </a>
+                        </li>
+                        <li {!! (Request::is('admin/kpi/satisfaction_kpi') ? 'class="active" id="active"' : '') !!}>
+                            <a href="{{ URL::to('admin/kpi/satisfaction_kpi') }}">
+                                <i class="fa fa-angle-double-right col-md-2"></i>
+                                Satisfaction Results
+                            </a>
+                        </li>
+                        <li {!! (Request::is('admin/kpi/us_dashboard') ? 'class="active" id="active"' : '') !!}>
+                            <a href="{{ URL::to('admin/kpi/us_dashboard') }}">
+                                <i class="fa fa-angle-double-right col-md-2"></i>
+                                US Dashboard
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                @endif
+                @if(Sentinel::getUser()->permissions['management'] || Sentinel::getUser()->permissions['development'])
+                <li {!! (Request::is('admin/kpi/sales_kpi') ? 'class="active" id="active"' : '') !!}>
+                    <a href="{{ URL::to('admin/kpi/sales_kpi') }}">
+                        <i class="fa fa-angle-double-right" data-toggle="collapse" href="#collapseMenu2"></i>
+                        MT Kpi
+                    </a>
+                    <ul class="collapse" id="collapseMenu2">
+                        <li {!! (Request::is('admin/kpi/mt_weekly') ? 'class="active" id="active"' : '') !!}>
+                            <a href="{{ URL::to('admin/kpi/mt_weekly') }}">
+                                <i class="fa fa-angle-double-right col-md-2"></i>
+                                Weekly Reports
+                            </a>
+                        </li>
+                        <li {!! (Request::is('admin/kpi/mt_quarterly') ? 'class="active" id="active"' : '') !!}>
+                            <a href="{{ URL::to('admin/kpi/mt_quarterly') }}">
+                                <i class="fa fa-angle-double-right col-md-2"></i>
+                               Quarterly Reports
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                @endif
+                    @if(Sentinel::getUser()->permissions['management'] || Sentinel::getUser()->permissions['development'])
+                        <li {!! (Request::is('admin/kpi/orders_kpi') ? 'class="active" id="active"' : '') !!}>
+                            <a href="{{ URL::to('admin/kpi/orders_kpi') }}">
+                                <i class="fa fa-angle-double-right"></i>
+                                Orders Kpi
+                            </a>
+                        </li>
+                    @endif
+                <li {!! (Request::is('admin/kpi/tickets_sales_kpi') || (Request::is('admin/kpi/tickets_helpdesk_kpi')) || (Request::is('admin/kpi/tickets_development_kpi')) ? 'class="active" id="active"' : '') !!}>
+                    <a href="{{ URL::to('admin/kpi/sales_kpi') }}">
+                        <i class="fa fa-angle-double-right" data-toggle="collapse" href="#collapseMenu3"></i>
+                        System Tickets
+                    </a>
+                    <ul class="collapse" id="collapseMenu3">
+                        <li {!! (Request::is('admin/kpi/tickets_sales_kpi') ? 'class="active" id="active"' : '') !!}>
+                            <a href="{{ URL::to('admin/kpi/tickets_sales_kpi') }}">
+                                <i class="fa fa-angle-double-right col-md-2"></i>
+                                Sales Kpi
+                            </a>
+                        </li>
+                        <li {!! (Request::is('admin/kpi/tickets_helpdesk_kpi') ? 'class="active" id="active"' : '') !!}>
+                            <a href="{{ URL::to('admin/kpi/tickets_helpdesk_kpi') }}">
+                                <i class="fa fa-angle-double-right col-md-2"></i>
+                                Helpdesk Kpi
+                            </a>
+                        </li>
+                        <li {!! (Request::is('admin/kpi/tickets_development_kpi') ? 'class="active" id="active"' : '') !!}>
+                            <a href="{{ URL::to('admin/kpi/tickets_development_kpi') }}">
+                                <i class="fa fa-angle-double-right col-md-2"></i>
+                                Development Kpi
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    @endif
+    <!-- @if( Sentinel::getUser()->permissions['sales'] || Sentinel::getUser()->permissions['data'])
+        <li {!! (Request::is('admin/tasks') ? 'class="active"' : '') !!}>
+            <a href="{{ URL::to('admin/tasks') }}">
+                <i class="livicon" data-c="#EF6F6C" data-hc="#EF6F6C" data-name="list-ul" data-size="18"
+                   data-loop="true"></i>
+                Tasks
+                <span class="badge badge-danger" id="taskcount"></span>
+            </a>
+        </li>
+    @endif -->
+@if(Sentinel::check() && Sentinel::getUser()->permissions['admin'] && Sentinel::getUser()->permissions['sales'])
+<li {!! ((Request::is('admin/users') || Request::is('admin/users/billingAddress') || Request::is('admin/users/create') || Request::is('admin/users/create_admin') || Request::is('admin/users/assignadmin') || Request::is('admin/users/AssignAdminToCompany') || Request::is('admin/users/2fa_overview')) || (Request::is('admin/transaction') || (Request::is('admin/transaction/*'))) || (Request::is('admin/raw/mobile/overview') || Request::is('admin/raw/landline/overview') || Request::is('admin/mobile/overview') || Request::is('admin/landline/overview') || Request::is('admin/geocoding/overview') || Request::is('admin/orders/overview'))  ? 'class="active"' : '') !!}>
+    <a href="#">
+            <i class="livicon" data-name="gears" data-size="18" data-c="#EF6F6C" data-hc="#EF6F6C"
+               data-loop="true"></i>
+            <span class="title">Manage Accounts</span>
+            <span class="fa arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <li {!! (Request::is('admin/users') || Request::is('admin/users/billingAddress') || Request::is('admin/users/create') || Request::is('admin/users/create_admin') || Request::is('admin/users/assignadmin') || Request::is('admin/users/AssignAdminToCompany') || Request::is('admin/users/2fa_overview') ? 'class="active"' : '') !!}>
+                <a href="#">
+                    <i class="livicon" data-name="user" data-size="18" data-c="#6CC66C" data-hc="#6CC66C"
+                       data-loop="true"></i>
+                    <span class="title">Users</span>
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li {!! (Request::is('admin/users') ? 'class="active" id="active"' : '') !!}>
+                        <a href="{{ URL::to('admin/users') }}">
+                            <i class="fa fa-angle-double-right"></i>
+                            Users/Companies
+                        </a>
+                    </li>
+                    <li {!! (Request::is('admin/users/billingAddress') ? 'class="active" id="active"' : '') !!}>
+                        <a href="{{ URL::to('admin/users/billingAddress') }}">
+                            <i class="fa fa-angle-double-right"></i>
+                            Add New Company
+                        </a>
+                    </li>
+                    <li {!! (Request::is('admin/users/create') ? 'class="active" id="active"' : '') !!}>
+                        <a href="{{ URL::to('admin/users/create') }}">
+                            <i class="fa fa-angle-double-right"></i>
+                            Add New Client
+                        </a>
+                    </li>
+                    {{-- <li {!! (Request::is('admin/users/create_admin') ? 'class="active" id="active"' : '') !!}>
+                        <a href="{{ URL::to('admin/users/create_admin') }}">
+                            <i class="fa fa-angle-double-right"></i>
+                            Add New Admin
+                        </a>
+                    </li> --}}
+                    <li {!! (Request::is('admin/users/assignadmin') ? 'class="active" id="active"' : '') !!}>
+                        <a href="{{ URL::to('admin/users/assignadmin') }}">
+                            <i class="fa fa-angle-double-right"></i>
+                            Assign Admin to Client
+                        </a>
+                    </li>
+                    <li {!! (Request::is('admin/users/AssignAdminToCompany') ? 'class="active" id="active"' : '') !!}>
+                        <a href="{{ URL::to('admin/users/AssignAdminToCompany') }}">
+                            <i class="fa fa-angle-double-right"></i>
+                            Assign Admin to Company
+                        </a>
+                    </li>
+                    {{--<li {!! (Request::is('admin/users/showpricing') ? 'class="active" id="active"' : '') !!}>
+                        <a href="{{ URL::to('admin/users/showpricing') }}">
+                            <i class="fa fa-angle-double-right"></i>
+                            Set Pricing
+                        </a>
+                    </li>--}}
+                    {{--<li {!! (Request::is('admin/users/*/editCompany') ? 'class="active" id="active"' : '') !!}>
+                        <a href="{{ URL::route('users.show',Sentinel::getUser()->id) }}">
+                            <i class="fa fa-angle-double-right"></i>
+                            View Profile
+                        </a>
+                    </li>--}}
+                    {{-- <li {!! (Request::is('admin/deleted_users') ? 'class="active" id="active"' : '') !!}>
+                        <a href="{{ URL::to('admin/deleted_users') }}">
+                            <i class="fa fa-angle-double-right"></i>
+                            Deleted Users
+                        </a>
+                    </li> --}}
+
+                    <li {!! (Request::is('admin/users/2fa_overview') ? 'class="active" id="active"' : '') !!}>
+                        <a href="{{ URL::to('admin/users/2fa_overview') }}">
+                            <i class="fa fa-angle-double-right"></i>
+                            Users overview
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="sub-menu"> 
+             {{--<li {!! (Request::is('admin/transaction') || (Request::is('admin/transaction/*')) ? 'class="active"' : '') !!}>
+                <a href="{{ URL::to('admin/transaction') }}">
+                <i class="livicon" data-name="piggybank" data-size="18" data-c="#F89A14" data-hc="#F89A14"
+                data-loop="true"></i>
+                Transactions
+                </a>
+            </li>--}}
+            <li {!! ( Request::is('admin/transaction') || Request::is('admin/users/showpricing') ? 'class="active"' : '') !!}>
+                <a href="#">
+                    <i class="livicon" data-c="#F89A14" data-hc="#F89A14" data-name="piggybank" data-size="18"
+                       data-loop="true"></i>
+                    <span class="title">Transactions</span>
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li {!! (Request::is('admin/transaction') ? 'class="active" id="active"' : '') !!}>
+                        <a href="{{ URL::to('admin/transaction') }}">
+                            <i class="fa fa-angle-double-right"></i>
+                            Set credits
+                        </a>
+                    </li>
+                    <li {!! (Request::is('admin/users/showpricing') ? 'class="active" id="active"' : '') !!}>
+                        <a href="{{ URL::to('admin/users/showpricing') }}">
+                            <i class="fa fa-angle-double-right"></i>
+                            Set Pricing
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>                    
+    </li>
+
+    {{-- <li {!! (Request::is('admin/groups') || Request::is('admin/groups/create') || Request::is('admin/groups/*') ? 'class="active"' : '') !!}>
+        <a href="#">
+            <i class="livicon" data-name="users" data-size="18" data-c="#418BCA" data-hc="#418BCA"
+               data-loop="true"></i>
+            <span class="title">Groups</span>
+            <span class="fa arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <li {!! (Request::is('admin/groups') ? 'class="active" id="active"' : '') !!}>
+                <a href="{{ URL::to('admin/groups') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    Groups
+                </a>
+            </li>
+            <li {!! (Request::is('admin/groups/create') ? 'class="active" id="active"' : '') !!}>
+                <a href="{{ URL::to('admin/groups/create') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    Add New Group
+                </a>
+            </li>
+        </ul>
+    </li> --}}
+@endif
+
+@if(Sentinel::getUser()->permissions['admin'])
+
+<li {!! ((Request::is('admin/b2c/add') || (Request::is('admin/b2c/overview')) || (Request::is('admin/b2c/update'))) || (Request::is('admin/mobile2') || Request::is('admin/mobile/create') || Request::is('admin/mobile/legend')) || (Request::is('admin/landline2') || Request::is('admin/landline/create'))  ? 'class="active"' : '') !!}>
+        <a href="#">
+            <i class="livicon" data-name="briefcase" data-size="18" data-c="#5bc0de" data-hc="#5bc0de"
+               data-loop="true"></i>
+            <span class="title">Samples</span>
+            <span class="fa arrow"></span>
+        </a>
+       <ul class="sub-menu"> 
+            <li {!! (Request::is('admin/b2c/add') || (Request::is('admin/b2c/overview')) || (Request::is('admin/b2c/update'))  ? 'class="active"' : '') !!}>
+                <a href="#">
+                    <i class="livicon" data-name="briefcase" data-size="18" data-c="#FF5733" data-hc="#FF5733"
+                       data-loop="true"></i>
+                    <span class="title">B2C</span>
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li {!! (Request::is('admin/b2c/add') ? 'class="active" id="active"' : '') !!}>
+                        <a href="{{ URL::to('admin/b2c/add') }}">
+                            <i class="fa fa-angle-double-right"></i>
+                            Add new sample
+                        </a>
+                    </li>
+                    <li {!! (Request::is('admin/b2c/update') ? 'class="active" id="active"' : '') !!}>
+                        <a href="{{ URL::to('admin/b2c/update') }}">
+                            <i class="fa fa-angle-double-right"></i>
+                            Update existing sample
+                        </a>
+                    </li>
+                    <li {!! (Request::is('admin/b2c/overview') ? 'class="active" id="active"' : '') !!}>
+                        <a href="{{ URL::to('admin/b2c/overview') }}">
+                            <i class="fa fa-angle-double-right"></i>
+                            Samples overview
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="sub-menu">
+            <li {!! (Request::is('admin/mobile2') || Request::is('admin/mobile/create') || Request::is('admin/mobile/legend') ? 'class="active"' : '') !!}>
+                <a href="#">
+                    <i class="livicon" data-name="cellphone" data-size="18" data-c="#4277f4" data-hc="#4277f4"
+                       data-loop="true"></i>
+                    <span class="title">Mobile</span>
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    @if(Sentinel::getUser()->permissions['admin'] && Sentinel::getUser()->permissions['data'])
+                        <li {!! (Request::is('admin/mobile/create') ? 'class="active" id="active"' : '') !!}>
+                            <a href="{{ URL::to('admin/mobile/create') }}">
+                                <i class="fa fa-angle-double-right"></i>
+                                Add New Sample
+                            </a>
+                        </li>
+                        <li {!! (Request::is('admin/mobile/upload_mobile_seeds') || Request::is('admin/mobile/upload_mobile_seeds/*') ? 'class="active"' : '') !!}>
+                            <a href="{{ URL::to('admin/mobile/upload_mobile_seeds') }}">
+                                <i class="fa fa-angle-double-right"></i>
+                                Upload mobile seeds
+                            </a>
+                        </li>
+                        <li {!! (Request::is('admin/mobile/legend') ? 'class="active" id="active"' : '') !!}>
+                            <a href="{{ URL::to('admin/mobile/legend') }}">
+                                <i class="fa fa-angle-double-right"></i>
+                                Manage Legend
+                            </a>
+                        </li>
+                    @endif
+                </ul>
+            </li>
+        </ul>
+        <ul class="sub-menu">
+        <li {!! (Request::is('admin/landline2') || Request::is('admin/landline/create')  ? 'class="active"' : '') !!}>
+            <a href="#">
+                <i class="livicon" data-name="phone" data-size="18" data-c="#F89A14" data-hc="#F89A14"
+                   data-loop="true"></i>
+                <span class="title">Landline</span>
+                <span class="fa arrow"></span>
+            </a>
+            <ul class="sub-menu">
+                @if(Sentinel::getUser()->permissions['admin'] && Sentinel::getUser()->permissions['data'])
+                    <li {!! (Request::is('admin/landline/create') ? 'class="active" id="active"' : '') !!}>
+                        <a href="{{ URL::to('admin/landline/create') }}">
+                            <i class="fa fa-angle-double-right"></i>
+                            Add New Sample
+                        </a>
+                    </li>
+                    <li {!! (Request::is('admin/landline/upload_landline_seeds') || Request::is('admin/landline/upload_landline_seeds/*') ? 'class="active"' : '') !!}>
+                        <a href="{{ URL::to('admin/landline/upload_landline_seeds') }}">
+                            <i class="fa fa-angle-double-right"></i>
+                            Upload landline seeds
+                         </a>
+                    </li>
+                    <li {!! (Request::is('admin/landline/manage_landline_selectors') || Request::is('admin/landline/manage_landline_selectors/*') ? 'class="active"' : '') !!}>
+                        <a href="{{ URL::to('admin/landline/manage_landline_selectors') }}">
+                            <i class="fa fa-angle-double-right"></i>
+                            Manage selectors
+                        </a>
+                    </li>
+                    @endif
+                </ul>
+            </li>
+        </ul>
+    </li>
+    
+
+    <li {!! (Request::is('admin/b2c/availability') || (Request::is('admin/mobile')) || (Request::is('admin/landline'))  ? 'class="active"' : '') !!}>
+        <a href="#">
+            <i class="livicon" data-name="bar" data-size="18" data-c="#FF5733" data-hc="#FF5733"
+               data-loop="true"></i>
+            <span class="title">Sample availability</span>
+            <span class="fa arrow"></span>
+        </a>
+       <ul class="sub-menu"> 
+            <li {!! (Request::is('admin/b2c/availability')  ? 'class="active"' : '') !!}>
+                    <li {!! (Request::is('admin/b2c/availability') ? 'class="active" id="active"' : '') !!}>
+                        <a href="{{ URL::to('admin/b2c/availability') }}">
+                            <i class="fa fa-angle-double-right"></i>
+                            B2C availability
+                        </a>
+                    </li>
+            </li>
+        </ul>
+        <ul class="sub-menu">
+            <li {!! (Request::is('admin/mobile') || Request::is('admin/mobile/create') || Request::is('admin/mobile/legend') ? 'class="active"' : '') !!}>
+                    <li {!! (Request::is('admin/mobile') ? 'class="active" id="active"' : '') !!}>
+                        <a href="{{ URL::to('admin/mobile') }}">
+                            <i class="fa fa-angle-double-right"></i>
+                            Mobile availability
+                        </a>
+                    </li>
+            </li>
+        </ul>
+        <ul class="sub-menu">
+            <li {!! (Request::is('admin/landline')   ? 'class="active"' : '') !!}>
+                <li {!! (Request::is('admin/landline') ? 'class="active" id="active"' : '') !!}>
+                    <a href="{{ URL::to('admin/landline') }}">
+                        <i class="fa fa-angle-double-right"></i>
+                        Landline availability
+                    </a>
+                </li>
+            </li>
+        </ul>
+    </li>
+@endif
+
+<!-- @if(Sentinel::getUser()->permissions['admin'])
+    <li {!! (Request::is('admin/b2c') || (Request::is('admin/mobile')) || (Request::is('admin/landline'))  ? 'class="active"' : '') !!}>
+        <a href="#">
+            <i class="livicon" data-name="users" data-size="18" data-c="#FF5733" data-hc="#FF5733"
+               data-loop="true"></i>
+            <span class="title">Sample availability</span>
+            <span class="fa arrow"></span>
+        </a>
+       <ul class="sub-menu"> 
+            <li {!! (Request::is('admin/b2c/add') || (Request::is('admin/b2c/overview')) || (Request::is('admin/b2c/update')) || (Request::is('admin/b2c/availability'))  ? 'class="active"' : '') !!}>
+                    <li {!! (Request::is('admin/b2c/availability') ? 'class="active" id="active"' : '') !!}>
+                        <a href="{{ URL::to('admin/b2c/availability') }}">
+                            <i class="fa fa-angle-double-right"></i>
+                            Sample availability
+                        </a>
+                    </li>
+            </li>
+        </ul>
+        <ul class="sub-menu">
+            <li {!! (Request::is('admin/mobile') || Request::is('admin/mobile/create') || Request::is('admin/mobile/legend') ? 'class="active"' : '') !!}>
+                    <li {!! (Request::is('admin/mobile') ? 'class="active" id="active"' : '') !!}>
+                        <a href="{{ URL::to('admin/mobile') }}">
+                            <i class="fa fa-angle-double-right"></i>
+                            Mobile availability
+                        </a>
+                    </li>
+            </li>
+        </ul>
+        <ul class="sub-menu">
+        <li {!! (Request::is('admin/landline') || Request::is('admin/landline/create')  ? 'class="active"' : '') !!}>
+                <li {!! (Request::is('admin/landline') ? 'class="active" id="active"' : '') !!}>
+                    <a href="{{ URL::to('admin/landline') }}">
+                        <i class="fa fa-angle-double-right"></i>
+                        Landline availability
+                    </a>
+                </li>
+        </li>
+    </ul>
+    </li>
+@endif  -->
+
+
+@if(Sentinel::getUser()->permissions['admin'] && (Sentinel::getUser()->permissions['data'] || Sentinel::getUser()->permissions['sales']))
+
+    <li {!! ( Request::is('admin/raw/mobile/overview') || Request::is('admin/raw/landline/overview') || Request::is('admin/mobile/overview') || Request::is('admin/landline/overview') || Request::is('admin/geocoding/overview') || Request::is('admin/orders/overview') ? 'class="active"' : '') !!}>
+        <a href="#">
+            <i class="livicon" data-c="#EF6F6C" data-hc="#EF6F6C" data-name="list-ul" data-size="18"
+               data-loop="true"></i>
+            <span class="title">Orders Overview</span>
+            <span class="fa arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <li {!! (Request::is('admin/orders/overview') ? 'class="active" id="active"' : '') !!}>
+                <a href="{{ URL::to('admin/orders/overview') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    All Orders Overview
+                </a>
+            </li>
+            <li {!! (Request::is('admin/mobile/overview') ? 'class="active" id="active"' : '') !!}>
+                <a href="{{ URL::to('admin/mobile/overview') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    Mobile Pulsed Orders Overview
+                </a>
+            </li>
+            <li {!! (Request::is('admin/landline/overview') ? 'class="active" id="active"' : '') !!}>
+                <a href="{{ URL::to('admin/landline/overview') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    Landline Pulsed Orders Overviews
+                </a>
+            </li>
+            <li {!! (Request::is('admin/raw/mobile/overview') ? 'class="active" id="active"' : '') !!}>
+                <a href="{{ URL::to('admin/raw/mobile/overview') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    Mobile Unpulsed Orders Overview
+                </a>
+            </li>
+            <li {!! (Request::is('admin/raw/landline/overview') ? 'class="active" id="active"' : '') !!}>
+                <a href="{{ URL::to('admin/raw/landline/overview') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    Landline Unpulsed Orders Overviews
+                </a>
+            </li>
+        </ul>
+    </li>
+@endif
+@if(Sentinel::getUser()->permissions['admin'] && Sentinel::getUser()->permissions['sales'])
+    <li {!! (Request::is('admin/file/send') || Request::is('admin/file/overview') ? 'class="active"' : '') !!}>
+        <a href="#">
+            <i class="livicon" data-c="#f4df42" data-hc="#f4df42" data-name="mail" data-size="18"
+               data-loop="true"></i>
+            <span class="title">Internal File System</span>
+            <span class="fa arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <li {!! (Request::is('admin/file/send') || Request::is('admin/file/*') ? 'class="active"' : '') !!}>
+                <a href="{{ URL::to('admin/file/send') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    Send File
+                </a>
+            </li>
+            <li {!! (Request::is('admin/file/overview') ? 'class="active" id="active"' : '') !!}>
+                <a href="{{ URL::to('admin/file/overview') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    File Overview
+                </a>
+            </li>
+        </ul>
+    </li>
+@endif
+<!-- @if(Sentinel::getUser()->permissions['admin'] && Sentinel::getUser()->permissions['sales'])
+    <li>
+        <a href="{{ URL::to('admin/tracking/overview') }}">
+            <i class="livicon" data-c="blue" data-hc="white" data-name="screenshot" data-size="18" data-loop="true"></i>
+            User tracking
+        </a>
+    </li>
+@endif -->
+
+@if(Sentinel::getUser()->permissions['admin'] && (Sentinel::getUser()->permissions['sales'] || Sentinel::getUser()->permissions['data']))
+    <li {!! (Request::is('admin/qc/*') ? 'class="active"' : '') !!}>
+        <a href="#">
+            <i class="livicon" data-c="#5CB85C" data-hc="#5CB85C" data-name="checked-on" data-size="18"
+               data-loop="true"></i>
+            <span class="title">Quality Check System</span>
+            <span class="fa arrow"></span>
+        </a>
+        <ul class="sub-menu">
+
+            <li {!! (Request::is('admin/qc/create') || Request::is('admin/qc/edit') ? 'class="active"' : '') !!}>
+                <a href="{{ URL::to('admin/qc/create') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    Create project
+                </a>
+            </li>
+            <li {!! (Request::is('admin/qc/overview') ? 'class="active" id="active"' : '') !!}>
+                <a href="{{ URL::to('admin/qc/overview') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    Projects Overview
+                </a>
+            </li>
+            <li {!! (Request::is('admin/qc/surveyoverview') ? 'class="active" id="active"' : '') !!}>
+                <a href="{{ URL::to('admin/qc/surveyoverview') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    Survey Overview
+                </a>
+            </li>
+            <li {!! (Request::is('admin/qc/reports') ? 'class="active" id="active"' : '') !!}>
+                <a href="{{ URL::to('admin/qc/reports') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    Survey Reports
+                </a>
+            </li>
+        </ul>
+    </li>
+
+    <!--<li {!! (Request::is('admin/qc_old/*') ? 'class="active"' : '') !!}>
+        <a href="#">
+            <i class="livicon" data-c="#5CB85C" data-hc="#5CB85C" data-name="checked-on" data-size="18"
+               data-loop="true"></i>
+            <span class="title">Old Quality Check System</span>
+            <span class="fa arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <li {!! (Request::is('admin/qc_old/create') || Request::is('admin/qc_old/edit') ? 'class="active"' : '') !!}>
+                <a href="{{ URL::to('admin/qc_old/create') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    Create order
+                </a>
+            </li>
+            <li {!! (Request::is('admin/qc_old/overview') ? 'class="active" id="active"' : '') !!}>
+                <a href="{{ URL::to('admin/qc_old/overview') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    Projects Overview
+                </a>
+            </li>
+            <li {!! (Request::is('admin/qc_old/surveyoverview') ? 'class="active" id="active"' : '') !!}>
+                <a href="{{ URL::to('admin/qc_old/surveyoverview') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    Survey Overview
+                </a>
+            </li>
+            <li {!! (Request::is('admin/qc_old/reports') ? 'class="active" id="active"' : '') !!}>
+                <a href="{{ URL::to('admin/qc_old/reports') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    Survey Reports
+                </a>
+            </li>
+        </ul>
+    </li>-->
+    <li {!! (Request::is('admin/kanban/dashboard') || (Request::is('admin/kanban_old/dashboard'))  ? 'class="active"' : '') !!}>
+        <a href="#">
+            <i class="livicon" data-name="list" data-size="18" data-c="#FF5733" data-hc="#FF5733"
+               data-loop="true"></i>
+            <span class="title">Kanban</span>
+            <span class="fa arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <li {!! (Request::is('admin/kanban/dashboard') || (Request::is('admin/kanban/*')) ? 'class="active"' : '') !!}>
+                <a href="{{ URL::to('admin/kanban/dashboard') }}">
+                    <i class="livicon" data-name="tasks" data-size="18" data-c="#F89A14" data-hc="#F89A14"
+                       data-loop="true"></i>
+                    Kanban 
+                </a>
+            </li>
+        </ul>
+        <ul class="sub-menu">
+            <li {!! (Request::is('admin/kanban_old/dashboard') || (Request::is('admin/kanban_old/*')) ? 'class="active"' : '') !!}>
+                <a href="{{ URL::to('admin/kanban_old/dashboard') }}">
+                    <i class="livicon" data-name="tasks" data-size="18" data-c="#F89A14" data-hc="#F89A14"
+                       data-loop="true"></i>
+                    Kanban Old
+                </a>
+            </li>
+        </ul>
+    </li>
+
+    <li {!! (Request::is('admin/toolbox/*') ? 'class="active"' : '') !!}>
+        <a href="#">
+            <i class="livicon" data-c="#5bc0de" data-hc="#5bc0de" data-name="hammer" data-size="18"
+               data-loop="true"></i>
+            <span class="title">Toolbox</span>
+            <span class="fa arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <li {!! (Request::is('admin/toolbox/businessfilter') || Request::is('admin/toolbox/businessfilter/*') ? 'class="active"' : '') !!}>
+                <a href="{{ URL::to('admin/toolbox/businessfilter') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    Business filter
+                </a>
+            </li>
+            <li {!! (Request::is('admin/toolbox/donotcall') || Request::is('admin/toolbox/donotcall/*') ? 'class="active"' : '') !!}>
+                <a href="{{ URL::to('admin/toolbox/donotcall') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    Do not call
+                </a>
+            </li>
+
+            <li {!! (Request::is('admin/toolbox/orderPopulus') || Request::is('admin/toolbox/*') ? 'class="active"' : '') !!}>
+                <a href="{{ URL::to('admin/toolbox/orderPopulus') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    Populus
+                </a>
+            </li>
+            <li {!! (Request::is('admin/toolbox/us-orders') || Request::is('admin/toolbox/us-orders/*') ? 'class="active"' : '') !!}>
+                <a href="{{ URL::to('admin/toolbox/us-orders') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    Us Orders
+                </a>
+            </li>
+            <li {!! (Request::is('admin/toolbox/raw/mobile/orderRedC') || Request::is('admin/toolbox/raw/mobile/orderRedC/*') ? 'class="active"' : '') !!}>
+                <a href="{{ URL::to('admin/toolbox/raw/mobile/orderRedC') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    Mobile RedC Order
+                </a>
+            </li>
+            <li {!! (Request::is('admin/toolbox/file-enrichment') || Request::is('admin/toolbox/file-enrichment/*') ? 'class="active"' : '') !!}>
+                <a href="{{ URL::to('admin/toolbox/file-enrichment') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    File Enrichment
+                </a>
+            </li>
+            <li {!! (Request::is('admin/toolbox/email-verification') || Request::is('admin/toolbox/email-verification/*') ? 'class="active"' : '') !!}>
+                <a href="{{ URL::to('admin/toolbox/email-verification') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    Email verification
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="{{ URL::to('admin/bug-report') }}" onclick="window.open('admin/submit-ticket', '_blank','height=600,width=600,left=500,top=200');return false;">
+            <i class="livicon" data-name="mail" data-size="18" data-c="#F89A14" data-hc="#F89A14"
+               data-loop="true"></i>
+            Submit Ticket
+        </a>
+    </li>
+
+    <li {!! (Request::is('admin/emailcontent/overview') || (Request::is('admin/emailcontent/*')) ? 'class="active"' : '') !!}>
+        <a href="{{ URL::to('admin/emailcontent/overview') }}">
+            <i class="livicon" data-name="brush" data-size="18" data-c="#F89A14" data-hc="#F89A14"
+               data-loop="true"></i>
+            Email Content
+        </a>
+    </li>
+@endif
+    <!-- Menus generated by CRUD generator -->
+    @include('admin/layouts/menu')
+</ul>

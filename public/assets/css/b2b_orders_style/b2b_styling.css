@@ -1,0 +1,299 @@
+[v-cloak] {
+    display : block
+}
+
+.tag_class .multiselect__tag{
+    background-color: #1ba1e2;
+}
+
+.element_class .multiselect__option--highlight{
+    background: #1ba1e2;
+    outline: none;
+    color: white;
+}
+.select_class .multiselect__option--highlight:after {
+    content: attr(data-select);
+    background: #1ba1e2;
+    color: white;
+}
+.icon_class .multiselect__tag-icon:hover {
+    background: #1ba1e2;
+}
+.fa-folder-o:before {
+    content: "\f196";
+}
+.fa-folder-open-o:before {
+    content: "\f147";
+}
+.v-leaf>.fa, .v-node>.fa {
+    color: #757b87 !important;
+}
+
+/*tooltip*/
+
+.tooltip_info {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip_info .tooltiptext_info {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+.tooltip_info .tooltiptext_info::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}
+
+.tooltip_info:hover .tooltiptext_info {
+    visibility: visible;
+}
+
+/**
+* Copied from Bootstrap 4
+*/
+.badge {
+    display: inline-block;
+    padding: 0.25em 0.4em;
+    font-size: 80%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 5px;
+}
+
+.badge:empty {
+    display: none;
+}
+
+.badge-pill {
+    padding-right: 0.6em;
+    padding-left: 0.6em;
+    border-radius: 10rem;
+}
+
+.badge-primary {
+    color: #fff;
+    background-color: #007bff;
+}
+
+.badge-primary[href]:focus, .badge-primary[href]:hover {
+    color: #fff;
+    text-decoration: none;
+    background-color: #0062cc;
+}
+
+.badge-light {
+    color: white;
+    background-color: #1ba1e2;
+}
+
+.badge-light[href]:focus, .badge-light[href]:hover {
+    color: #212529;
+    text-decoration: none;
+    background-color: #dae0e5;
+}
+
+.badge-dark {
+    color: #fff;
+    background-color: #343a40;
+}
+
+.badge-dark[href]:focus, .badge-dark[href]:hover {
+    color: #fff;
+    text-decoration: none;
+    background-color: #1d2124;
+}
+
+/**
+* Original styles
+*/
+.tags-input-default-class {
+    padding: 1rem 1rem;
+
+    background: #fff;
+
+    border: 1px solid transparent;
+    border-radius: 5px;
+    border-color: #dbdbdb;
+}
+
+.tags-input-remove {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    width: 0.9rem;
+    height: 0.9rem;
+    overflow: hidden;
+}
+
+.tags-input-remove:before, .tags-input-remove:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    background: #35495e;
+    height: 2px;
+    margin-top: -1px;
+}
+
+.tags-input-remove:before {
+    transform: rotate(45deg);
+}
+.tags-input-remove:after {
+    transform: rotate(-45deg);
+}
+
+.tags-input input:focus {
+    outline: none;
+}
+.tags-input input {
+    padding-left: 10px;
+}
+
+/**
+* show/hide
+*/
+[data-toggle="collapse"][aria-expanded="true"] > .js-rotate-if-collapsed
+{
+    -webkit-transform: rotate(180deg);
+    -moz-transform:    rotate(180deg);
+    -ms-transform:     rotate(180deg);
+    -o-transform:      rotate(180deg);
+    transform:         rotate(180deg);
+    -webkit-transition-duration: .5s;
+    -moz-transition-duration: .5s;
+    -o-transition-duration: .5s;
+    transition-duration: .5s;
+}
+
+.vertical-align {
+    display: flex;
+    flex-direction: row;
+}
+
+.vertical-align > [class^="col-"],
+.vertical-align > [class*=" col-"] {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Optional, to align inner items
+		                              horizontally inside the column */
+}
+
+.new_range{
+    color: #757b87;
+    cursor: pointer !important;
+}
+
+
+.scrolling table {
+    table-layout: inherit;
+    *margin-left: -100px;/*ie7*/
+}
+.scrolling td, th {
+    vertical-align: top;
+    padding: 10px;
+    min-width: 125px;
+}
+.scrolling th {
+    position: absolute;
+    *position: relative; /*ie7*/
+    left: 0;
+    width: 120px;
+}
+.outer {
+    position: relative
+}
+.inner {
+    overflow-x: auto;
+    overflow-y: visible;
+    margin-left: 120px;
+}
+/* width */
+.inner::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    cursor: -webkit-grab !important;
+    cursor: grab !important;
+}
+
+/* Track */
+.inner::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+/* Handle */
+.inner::-webkit-scrollbar-thumb {
+    background: #98c2cb;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+.inner::-webkit-scrollbar-thumb:hover {
+    background: #50626b;
+}
+
+/* special input fields */
+
+.user-input-wrp {
+    position: relative;
+    width: 100%;
+}
+.user-input-wrp .inputText{
+    width: 100%;
+    outline: none;
+    border:none;
+    border-bottom: 1px solid #777;
+    border-radius: 5px;
+}
+.user-input-wrp .inputText:invalid {
+    box-shadow: none !important;
+}
+.user-input-wrp .inputText:focus{
+    border-color: #98c2cb;
+    border-width: medium medium 2px;
+}
+.user-input-wrp .floating-label {
+    position: absolute;
+    pointer-events: none;
+    top: 18px;
+    left: 5px;
+    font-size: small;
+    transition: 0.3s ease-in-out all;
+    color: #a9a9a9;
+}
+.user-input-wrp input:focus ~ .floating-label,
+.user-input-wrp input:not(:focus):valid ~ .floating-label{
+    top: 0;
+    left: 0;
+    font-size: x-small;
+    opacity: 1;
+}
+.industryCode:hover{
+    cursor: pointer !important;
+    border-radius: 5px;
+    background-color: #1ba1e2;;
+    color: white;
+    padding: 0 7px;
+}

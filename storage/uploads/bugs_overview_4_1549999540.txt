@@ -1,0 +1,9 @@
+Emilija’s bugs:
+
+1 (1,2,3) toa so listing countries e fixnato, togas menjavme tabeli koa si testirala fixed
+2 (1) front-end issue (2) moze da se trgne ama i ne mora i onaka dava error deka nemas filteri i counts (3) ? fixed
+3 - malo issue za Emilija, delimiter vo csv fajl
+4 - .csv file
+5 - fixed
+6 - valdiation task
+7 - oops task
