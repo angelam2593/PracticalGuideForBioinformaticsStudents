@@ -24,6 +24,7 @@ class AdminController extends Controller
 
     public function userStudent()
     {
+        //test
         $godini = Year::all(); 
         $studenti = User::where('admin', 0)->get();
         return view('admin.user_student', compact('studenti', 'godini'));
